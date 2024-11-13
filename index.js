@@ -1,6 +1,8 @@
 const input = document.getElementById('input');
 const object = document.getElementById('object');
 const startVid = document.getElementById('startVid');
+const fsVid = document.getElementById('fsVid');
+const vid = document.getElementById('video');
 
 const audios = [{path: "audio/audio1.mp3", drop: 4500}, {path: "audio/audio2.mp3", drop: 4100}]
 
@@ -20,12 +22,17 @@ startVid.addEventListener('click', () => {
   object.style.display = "none";
   const audio = new Audio(chosenAudio.path)
   audio.play()
-  audio.onplay = () => {
+  audio.onplay = function(){
     setTimeout(() => {
       object.style.display = "initial";
     }, chosenAudio.drop)
   }
   audio.onended = () => {
     startVid.style.display = "initial";
+    document.exitFullscreen();
   }
+})
+
+fsVid.addEventListener('click', () => {
+  video.requestFullscreen();
 })
