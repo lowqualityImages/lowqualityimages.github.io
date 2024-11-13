@@ -17,10 +17,12 @@ startVid.addEventListener('click', () => {
   object.style.display = "none";
   const audio = new Audio(`audio/audio1.mp3`)
   audio.play()
-  setTimeout(() => {
-    object.style.display = "initial";
-  }, 4500)
-  setTimeout(() => {
+  audio.onplay = () => {
+    setTimeout(() => {
+      object.style.display = "initial";
+    }, 4500)
+  }
+  audio.onended = () => {
     startVid.style.display = "initial";
-  }, 10500)
+  }
 })
