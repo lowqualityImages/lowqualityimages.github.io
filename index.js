@@ -20,9 +20,10 @@ startVid.addEventListener('click', () => {
   const chosenAudio = audios[Math.floor(Math.random() * audios.length)]
   startVid.style.display = "none";
   object.style.display = "none";
-  const audio = new Audio(chosenAudio.path)
-  audio.play()
-  audio.onplay = function(){
+  const audio = new Audio(chosenAudio.path);
+  audio.load();
+  audio.play();
+  audio.onplay = function() {
     setTimeout(() => {
       object.style.display = "initial";
     }, chosenAudio.drop)
